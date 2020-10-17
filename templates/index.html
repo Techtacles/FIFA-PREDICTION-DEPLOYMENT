@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VALUE PREDICTION</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for("static",filename="css/style.css")}}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <img class="wave" src="{{url_for("static",filename="img/wave.png")}}">
+  <div class="container">
+    <div class="img">
+      <img src="{{url_for("static",filename="img/bg.svg")}}">
+    </div>
+    
+    <div class="login-content">
+      <form action="{{ url_for("predict")}}" method="POST">
+        <img src="{{url_for("static",filename="img/avatar.svg")}}">
+        <div class="container-pro"></div>
+              <div class="input-div one">
+                 <div class="i">
+                    <i class="fas fa-user"></i>
+                 </div>
+                 <div class="div">
+                    <h5>Enter Age</h5>
+                    <input type="text"  name="age" id="age" class="input" required>
+                 </div>
+              </div>
+              <div class="input-div pass">
+                 <div class="i"> 
+                    <i class="fas fa-lock"></i>
+                 </div>
+                 <div class="div">
+                    <h5>Enter Overall</h5>
+                    <input type="text" name="overall" class="input" id="overall" required>
+                 </div>
+              </div>
+              <div class="input-div pass">
+                 <div class="i"> 
+                    <i class="fas fa-lock"></i>
+                 </div>
+                 <div class="div">
+                    <h5>Enter Potential</h5>
+                    <input type="text" name="potential" class="input" id="potential" required>
+                 </div>
+              </div>
+              <div class="input-div pass">
+                 <div class="i"> 
+                    <i class="fas fa-lock"></i>
+                 </div>
+                 <div class="div">
+                    <h5>Enter wage($)</h5>
+                    <input type="text" name="wage" id="wage" class="input" required>
+                 </div>
+              </div>
+              
+             
+              <input type="submit" class="btn" value="PREDICT VALUE">
+              <p style="position: absolute;bottom: -5%;left: 50%;transform: translate(-50% , 50%); margin-top: 20px; "> {{ prediction_text}}</p>
+            </form>
+
+        </div>
+    </div>
+    <script type="text/javascript" >
+      
+      const inputs = document.querySelectorAll(".input");
+
+
+function addcl(){
+  let parent = this.parentNode.parentNode;
+  parent.classList.add("focus");
+}
+
+function remcl(){
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove("focus");
+  }
+}
+
+
+inputs.forEach(input => {
+  input.addEventListener("focus", addcl);
+  input.addEventListener("blur", remcl);
+});
+
+    </script>
+
+<br><br>
+
+
+</body>
+</html>
